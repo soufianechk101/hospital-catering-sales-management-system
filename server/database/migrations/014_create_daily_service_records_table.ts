@@ -1,0 +1,26 @@
+import { Migration } from '@nitro/db'
+
+export default class extends Migration {
+  async up() {
+    this.db.schema.createTable('daily_service_records', (table) => {
+      table.uuid('id').primary()
+      table.uuid('daily_record_id').notNull()
+      table.uuid('service_id').notNull()
+      table.uuid('meal_period_id').notNull()
+      table.decimal('passage_global', 10, 2).notNull()
+      table.decimal('total_revenue', 12, 2).default('0')
+      table.timestamps(true, true)
+      table.foreign('daily_record_id').references('daily_records.id')
+      table.foreign('service_id').references('services.id')
+      table.foreign('meal_period_id').references('meal_periods.id')
+    })
+
+    this.db.schema.alterTable('daily_service_records', (table) => {
+      table.index(['daily_record_id', 'service_id'], 'idx_daily_service_records_daily_service')
+    })
+  }
+
+  async down() {
+    this.db.schema.dropTable('daily_service_records')
+  }
+}
