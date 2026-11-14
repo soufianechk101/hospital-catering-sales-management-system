@@ -1,5 +1,5 @@
 import { defineHandler } from "nitro";
-import { query } from "../../database/db";
+import { query } from "../../../database/db";
 
 export default defineHandler(async (event) => {
   const date = event.query.date as string || new Date().toISOString().split('T')[0];

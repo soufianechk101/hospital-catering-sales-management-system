@@ -1,5 +1,5 @@
 import { defineHandler } from "nitro";
-import { query } from "../../database/db";
+import { query } from "../../../database/db";
 import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET || "medicatering-secret-key-change-in-production";

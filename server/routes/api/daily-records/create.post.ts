@@ -1,6 +1,6 @@
 import { defineHandler } from "nitro";
 import { readBody } from "nitro/h3";
-import { query } from "../../database/db";
+import { query } from "../../../database/db";
 
 export default defineHandler(async (event) => {
   try {

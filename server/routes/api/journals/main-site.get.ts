@@ -1,5 +1,5 @@
 import { defineHandler } from "nitro";
-import { query } from "../../database/db";
+import { query } from "../../../database/db";
 
 export default defineHandler(async (event) => {
   const siteId = event.query.site_id as string;
